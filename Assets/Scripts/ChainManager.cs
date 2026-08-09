@@ -1,0 +1,82 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class ChainManager : MonoBehaviour
+{
+   [Header("Chain Settings")]
+   public float timeWindow = 5.0f;
+   private float currentTimer;
+   private bool isTimeRunning = false;
+
+   [Header("Nodes Configuraation")]
+   public List<Node> activeNodeChain = new List<Node>();
+   private List<Node> unvisitedNodes = new List<Node>();
+   private Node currentTargetNode;
+   private void OnEnable()
+    {
+        Node.OnNodeConnected += ValidateConnection;
+    }
+    private void OnDisable()
+    {
+        Node.OnNodeConnected -= ValidateConnection;
+    }
+    private void Start()
+    {
+        activeNodeChain = new List<Node>(FindObjectsOfType<Node>());
+        ResetChain();
+    }
+    private void Update()
+    {
+        
+        if (isTimeRunning )
+        {
+            currentTimer -= Time.deltaTime;
+
+            if (currentTimer <= 0)
+            {
+                Debug.Log("Time Out! Chain Broken!");
+                ResetChain();
+            }
+        }
+    }
+
+    private void SetNextRandomTargetNode()
+    {
+        if(unvisitedNodes.Count > 0)
+        {
+            int randomIndex = Random.Range(0, unvisitedNodes.Count);
+            currentTargetNode = unvisitedNodes[randomIndex];
+            unvisitedNodes.RemoveAt(randomIndex);
+            currentTargetNode.SetState(currentTargetNode.targetedState);
+
+        }
+        else
+        {
+            Debug.Log("Level Completed! All Random Nodes Connected!");
+            isTimeRunning = false;
+        }
+    }
+
+    public void ValidateConnection(Node node)
+    {
+        if(node == currentTargetNode)
+        {
+            Debug.Log($"Node {node.nodeID} Connected!");
+            currentTimer = timeWindow;
+            isTimeRunning = true;
+            SetNextRandomTargetNode();
+        }
+    }
+    public void ResetChain()
+    {
+        isTimeRunning = false;
+        currentTimer = timeWindow;
+        foreach(Node node in activeNodeChain)
+        {
+            node.SetState(node.inactiveState);
+        }
+
+        unvisitedNodes = new List<Node>(activeNodeChain);
+        SetNextRandomTargetNode();
+    }
+}

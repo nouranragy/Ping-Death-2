@@ -22,7 +22,7 @@ public class ChainManager : MonoBehaviour
     }
     private void Start()
     {
-        activeNodeChain = new List<Node>(FindObjectsOfType<Node>());
+        activeNodeChain = new List<Node>(FindObjectsByType<Node>());
         ResetChain();
     }
     private void Update()
@@ -52,7 +52,8 @@ public class ChainManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Level Completed! All Random Nodes Connected!");
+            //Added the debug statement in the LevelWin method
+            GameManager.Instance.LevelWin();
             isTimeRunning = false;
         }
     }

@@ -18,6 +18,7 @@ public class BouncePlate : MonoBehaviour
     private void Update()
     {
         // move the plate up and down using pingpong
+        if (!GameManager.Instance.isGameActive ) { return; }
        float newY = startPos.y + Mathf.PingPong(Time.time * moveSpeed, moveDistance) - (moveDistance / 2f);
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
 

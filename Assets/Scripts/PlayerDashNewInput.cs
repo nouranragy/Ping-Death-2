@@ -3,12 +3,13 @@ using System.Collections;
 using UnityEngine.InputSystem;
 public class PlayerDashNewInput : MonoBehaviour
 {
+    private Animator anim;
     private Rigidbody2D rb;
     private Camera mainCam;
 
     [Header("Dash Settings")]
     [SerializeField] private float dashSpeed = 20f;
-    [SerializeField] private float dashCooldown = 1f;
+    [SerializeField] private float dashCooldown = 0f;
 
     private bool canDash = true;
     private bool isDashing;
@@ -22,6 +23,7 @@ public class PlayerDashNewInput : MonoBehaviour
         mainCam = Camera.main;
         // Cache initial gravity scale setting
         originalGravity = rb.gravityScale;
+        anim = GetComponent<Animator>();
     }
     
     
@@ -43,11 +45,21 @@ public class PlayerDashNewInput : MonoBehaviour
         canDash = false;
         isDashing = true;
 
+        if (anim != null) anim.SetBool("isDashing", true);
+
           rb.linearVelocity = Vector2.zero;
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mouseScreenPos);
         Vector2 targetPosition = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
         
+        Vector2 dashDirection = (targetPosition - (Vector2)transform.position).normalized;
+
+        if (anim != null)
+        {
+            anim.SetFloat("DashX", dashDirection.x);
+            anim.SetFloat("DashY", dashDirection.y);
+            anim.SetTrigger("Dash"); 
+        }
 
         //float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
@@ -74,6 +86,7 @@ public class PlayerDashNewInput : MonoBehaviour
         rb.gravityScale = originalGravity;
         rb.linearVelocity = Vector2.zero;
         isDashing = false;
+        if (anim != null) anim.SetBool("isDashing", false);
     }
 
     public void CancelDash()

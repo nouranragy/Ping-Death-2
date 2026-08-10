@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 4459526d976b0b041838e61dcaf20fed
+guid: a1208ff80e455e44ca4fe648a97565f8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1573084109328194548
-    second: Dash_Right_Up_0
+      213: -2993219460067253004
+    second: Dash_Up_0
   - first:
-      213: -3936350060973942965
-    second: Dash_Right_Up_1
+      213: 8664564697218128416
+    second: Dash_Up_1
   - first:
-      213: 338526115195553161
-    second: Dash_Right_Up_2
+      213: 1547576566491392033
+    second: Dash_Up_2
   - first:
-      213: -8996438204564232083
-    second: Dash_Right_Up_3
+      213: -1951507651357619142
+    second: Dash_Up_3
   - first:
-      213: 3033057447698683931
-    second: Dash_Right_Up_4
+      213: 228116900989162537
+    second: Dash_Up_4
   - first:
-      213: 6241106108247489999
-    second: Dash_Right_Up_5
+      213: -8076417998904910418
+    second: Dash_Up_5
   - first:
-      213: -591737466494756908
-    second: Dash_Right_Up_6
+      213: 246016236728258522
+    second: Dash_Up_6
   - first:
-      213: 1810778518241474372
-    second: Dash_Right_Up_7
+      213: 4610006711299861323
+    second: Dash_Up_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -134,35 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dash_Right_Up_0
+      name: Dash_Up_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 19
-        width: 18
-        height: 25
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4fb9152b9a7b4d510800000000000000
-      internalID: 1573084109328194548
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dash_Right_Up_1
-      rect:
-        serializedVersion: 2
-        x: 66
+        x: 17
         y: 20
-        width: 19
-        height: 23
+        width: 14
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,86 +149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b479f08a9764f59c0800000000000000
-      internalID: -3936350060973942965
+      spriteID: 4f4a7e382c2f576d0800000000000000
+      internalID: -2993219460067253004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dash_Right_Up_2
+      name: Dash_Up_1
       rect:
         serializedVersion: 2
-        x: 113
-        y: 22
-        width: 21
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9858c6b45bfa2b400800000000000000
-      internalID: 338526115195553161
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dash_Right_Up_3
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 22
-        width: 21
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d68223d3e1b362380800000000000000
-      internalID: -8996438204564232083
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dash_Right_Up_4
-      rect:
-        serializedVersion: 2
-        x: 209
-        y: 22
-        width: 21
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b18de69cda5971a20800000000000000
-      internalID: 3033057447698683931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dash_Right_Up_5
-      rect:
-        serializedVersion: 2
-        x: 257
+        x: 65
         y: 21
-        width: 21
-        height: 20
+        width: 14
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,41 +171,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcdbc9b40fcdc9650800000000000000
-      internalID: 6241106108247489999
+      spriteID: 02a931f6fa7be3870800000000000000
+      internalID: 8664564697218128416
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dash_Right_Up_6
+      name: Dash_Up_2
       rect:
         serializedVersion: 2
-        x: 306
-        y: 21
-        width: 20
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4d75a4dc8e9b9c7f0800000000000000
-      internalID: -591737466494756908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dash_Right_Up_7
-      rect:
-        serializedVersion: 2
-        x: 354
-        y: 21
-        width: 19
+        x: 111
+        y: 23
+        width: 18
         height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -303,8 +193,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 447f0bae77d212910800000000000000
-      internalID: 1810778518241474372
+      spriteID: 128207410b81a7510800000000000000
+      internalID: 1547576566491392033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_Up_3
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 22
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c4f50712adae4e0800000000000000
+      internalID: -1951507651357619142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_Up_4
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 21
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 924d8b2ec1f6a2300800000000000000
+      internalID: 228116900989162537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_Up_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 21
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead93b5ee9ccaef80800000000000000
+      internalID: -8076417998904910418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_Up_6
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 21
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf8a2fb6760a6300800000000000000
+      internalID: 246016236728258522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dash_Up_7
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 20
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4be137dda80aff30800000000000000
+      internalID: 4610006711299861323
       vertices: []
       indices: 
       edges: []
@@ -323,14 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dash_Right_Up_0: 1573084109328194548
-      Dash_Right_Up_1: -3936350060973942965
-      Dash_Right_Up_2: 338526115195553161
-      Dash_Right_Up_3: -8996438204564232083
-      Dash_Right_Up_4: 3033057447698683931
-      Dash_Right_Up_5: 6241106108247489999
-      Dash_Right_Up_6: -591737466494756908
-      Dash_Right_Up_7: 1810778518241474372
+      Dash_Up_0: -2993219460067253004
+      Dash_Up_1: 8664564697218128416
+      Dash_Up_2: 1547576566491392033
+      Dash_Up_3: -1951507651357619142
+      Dash_Up_4: 228116900989162537
+      Dash_Up_5: -8076417998904910418
+      Dash_Up_6: 246016236728258522
+      Dash_Up_7: 4610006711299861323
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

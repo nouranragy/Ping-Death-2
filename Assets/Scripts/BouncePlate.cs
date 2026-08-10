@@ -27,15 +27,18 @@ public class BouncePlate : MonoBehaviour
        //Check if the colliding object is the player
         if (other.CompareTag("Player"))
         {
+           // Cancel active player dash coroutine to allow physics launch
+            PlayerDashNewInput playerDash = other.GetComponent<PlayerDashNewInput>();
+            if (playerDash != null)
+            {
+                playerDash.CancelDash();
+            }
+
             Rigidbody2D playerRb = other.GetComponent<Rigidbody2D>();
-            
             if (playerRb != null)
             {
-                // Reset current player velocity for consistent bounce physics
-                playerRb.linearVelocity = Vector2.zero;
-
-                // Apply  force in the specified direction
-                playerRb.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
+                // Apply direct impulse velocity along the specified bounce direction
+                playerRb.linearVelocity = bounceDirection.normalized * bounceForce;
             }
         }
     }

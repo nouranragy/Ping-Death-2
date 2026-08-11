@@ -5093,14 +5093,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BouncePlate
       objectReference: {fileID: 0}
-    - target: {fileID: 5913567011253886062, guid: 1ce759d0216cdbe49adf3eec6172359d, type: 3}
-      propertyPath: m_Size.x
-      value: 2.9806566
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913567011253886062, guid: 1ce759d0216cdbe49adf3eec6172359d, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.02924776
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

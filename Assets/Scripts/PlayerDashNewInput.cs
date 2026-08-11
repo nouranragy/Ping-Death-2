@@ -86,11 +86,7 @@ public class PlayerDashNewInput : MonoBehaviour
         rb.gravityScale = originalGravity;
         rb.linearVelocity = Vector2.zero;
         isDashing = false;
-        if (anim != null) 
-        {
-            anim.SetBool("isDashing", false);
-           
-        }
+        if (anim != null) anim.SetBool("isDashing", false);
     }
 
     public void CancelDash()
@@ -106,6 +102,12 @@ public class PlayerDashNewInput : MonoBehaviour
          canDash = true;
 
     }
-}
+
+        
+      
+       
+        // yield return new WaitForSeconds(dashCooldown);
+        
+    }
 
 

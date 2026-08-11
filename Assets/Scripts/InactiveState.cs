@@ -14,7 +14,7 @@ public class InactiveState : IState
         node.isTargeted = false;
     }
      public void Execute()
-    {
+    {  
         
     }
     public void Exit()

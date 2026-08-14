@@ -927,6 +927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashNewInput
   dashSpeed: 200
   dashCooldown: 1
+  audioSource: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!50 &1584152854
 Rigidbody2D:
   serializedVersion: 5

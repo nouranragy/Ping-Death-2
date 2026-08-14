@@ -48,21 +48,5 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void OnNextLevelButtonClicked()
-    {
-        if (LevelManager.Instance != null)
-            LevelManager.Instance.LoadNextLevel();
-    }
-
-    public void OnRestartButtonClicked()
-    {
-        if (LevelManager.Instance != null)
-            LevelManager.Instance.RestartCurrentLevel();
-    }
-
-    public void OnMainMenuButtonClicked()
-    {
-        if (LevelManager.Instance != null)
-            LevelManager.Instance.LoadMainMenu();
-    }
+    
 }

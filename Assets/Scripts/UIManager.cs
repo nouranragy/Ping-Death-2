@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
 
     //public Button pauseButton;
     //public Button restartButton;
+    public Button nextLevelButton;
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject pausePanel;
@@ -58,9 +59,32 @@ public class UIManager : MonoBehaviour
     }
 
     public void ShowWinPanel()
-    {       
+    {
+        Time.timeScale = 0f;
+
         WinPanel.SetActive(true);
-        Time.timeScale = 0f;    
+        int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
+        bool hasNextLevel = nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
+        nextLevelButton.gameObject.SetActive(hasNextLevel);
+
+    }
+
+    public void OnNextLevelButtonClicked()
+    {
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.LoadNextLevel();
+    }
+
+    public void OnRestartButtonClicked()
+    {
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.RestartCurrentLevel();
+    }
+
+    public void OnMainMenuButtonClicked()
+    {
+        if (LevelManager.Instance != null)
+            LevelManager.Instance.LoadMainMenu();
     }
 
     public void OnResumeButtonClicked()

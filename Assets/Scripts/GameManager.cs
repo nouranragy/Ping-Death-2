@@ -38,12 +38,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
-
+       
         if(audioSource == null )
         audioSource = GetComponent<AudioSource>();
     }
 
+    
     private void Start()
     {
         StartGame();
@@ -113,13 +113,7 @@ public class GameManager : MonoBehaviour
         OnGameOver?.Invoke();
     }
     
-    //public void RestartCurrentLevel()
-    //{
-      //  StartGame();
-        //Time.timeScale = 1f;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    //}
-
+    
     public void TogglePause()
     {
         isPaused = !isPaused;

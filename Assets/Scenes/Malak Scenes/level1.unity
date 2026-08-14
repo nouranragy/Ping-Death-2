@@ -3346,8 +3346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 113.900024, y: 38.5}
-  m_SizeDelta: {x: 138.04, y: 30}
+  m_AnchoredPosition: {x: 138.3, y: 47.239}
+  m_SizeDelta: {x: 138.04, y: 31.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547548804
 MonoBehaviour:
@@ -3393,7 +3393,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 802584487}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: TogglePause
         m_Mode: 1
@@ -3526,9 +3526,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1486750217}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: RestartCurrentLevel
+      - m_Target: {fileID: 951672225}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnRestartButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3644,6 +3644,8 @@ MonoBehaviour:
   invincibilityDuration: 1
   isGameActive: 0
   isPaused: 0
+  audioSource: {fileID: 0}
+  gameOverSound: {fileID: 0}
 --- !u!4 &802584488
 Transform:
   m_ObjectHideFlags: 0
@@ -3742,9 +3744,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 802584487}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: TogglePause
+      - m_Target: {fileID: 951672225}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnResumeButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3825,6 +3827,11 @@ MonoBehaviour:
   activeNodeChain:
   - {fileID: 0}
   - {fileID: 0}
+  unvisitedNodes: []
+  audioSource: {fileID: 0}
+  connectSound: {fileID: 0}
+  chainBreakSound: {fileID: 0}
+  chainCompleteSound: {fileID: 0}
 --- !u!4 &903261930
 Transform:
   m_ObjectHideFlags: 0
@@ -4011,6 +4018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   livesText: {fileID: 1443142728}
   timerText: {fileID: 1266762005}
+  nextLevelButton: {fileID: 1651727101}
   gameOverPanel: {fileID: 1778448801}
   pausePanel: {fileID: 139765477}
   WinPanel: {fileID: 1077211844}
@@ -4440,9 +4448,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1486750217}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadMainMenu
+      - m_Target: {fileID: 951672225}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnMainMenuButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6287,9 +6295,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1486750217}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: LoadNextLevel
+      - m_Target: {fileID: 951672225}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnNextLevelButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7026,9 +7034,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1486750217}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: RestartCurrentLevel
+      - m_Target: {fileID: 951672225}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: OnRestartButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7170,6 +7178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7159bc0e2c81424e9eca75380175311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovingBug
+  audioSource: {fileID: 0}
+  hitPlayerSound: {fileID: 0}
   waypoints:
   - {fileID: 26618212}
   - {fileID: 184299692}

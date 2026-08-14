@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashNewInput
   dashSpeed: 100
   dashCooldown: 0
+  audioSource: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!114 &9068429998516304846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,9 +177,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: 1155776459
+  m_SortingLayer: 3
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1229525431899254980, guid: 06cb5ce4658dbcc4ebfd4ea83731e5d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float levelTimer = 60f;
     [SerializeField] private float invincibilityDuration = 1f;
 
-    public bool isGameActive = false;
-    public bool isPaused=false;
+    [SerializeField] public bool isGameActive = false;
+    [SerializeField] public bool isPaused=false;
     private bool isInvincible = false;
 
      [Header("Audio Settings")]

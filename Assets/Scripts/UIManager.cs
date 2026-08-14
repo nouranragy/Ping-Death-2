@@ -7,14 +7,15 @@ public class UIManager : MonoBehaviour
     
     public TextMeshProUGUI livesText;
     public TextMeshProUGUI timerText;
-   // public TextMeshProUGUI gameOverText;
+    // public TextMeshProUGUI gameOverText;
 
 
     //public Button pauseButton;
     //public Button restartButton;
 
-    public GameObject gameOverPanel;
-    public GameObject pausePanel;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject WinPanel;
 
 
     private void OnEnable()
@@ -23,6 +24,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnTimerUpdated += UpdateTimerUI;
         GameManager.OnPauseStateChanged += ShowPausePanel;
         GameManager.OnGameOver += ShowGameOverPanel;
+        GameManager.OnGameWin += ShowWinPanel;
     }
 
     private void OnDisable()
@@ -31,6 +33,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnTimerUpdated -= UpdateTimerUI;
         GameManager.OnPauseStateChanged -= ShowPausePanel;
         GameManager.OnGameOver -= ShowGameOverPanel;
+        GameManager.OnGameWin -= ShowWinPanel;
     }
 
     private void UpdateLivesUI(int newLives)
@@ -53,6 +56,19 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
 
     }
+
+    public void ShowWinPanel()
+    {       
+        WinPanel.SetActive(true);
+        Time.timeScale = 0f;    
+    }
+
+    public void OnResumeButtonClicked()
+    {
+        if (GameManager.Instance != null)
+            GameManager.Instance.TogglePause();
+    }
+
 
 
 }

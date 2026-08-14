@@ -103,13 +103,13 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         OnGameOver?.Invoke();
     }
-
-    public void RestartCurrentLevel()
-    {
-        StartGame();
+    
+    //public void RestartCurrentLevel()
+    //{
+      //  StartGame();
         //Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 
     public void TogglePause()
     {

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class DinosaurSpawner : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private List<Transform> allRouters; 
+   
     [SerializeField] private Transform[] spawnPoints;   
 
     [Header("Spawn Settings")]
@@ -22,26 +22,54 @@ public class DinosaurSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenSpawns);
 
-            if (allRouters.Count > 0 && spawnPoints.Length > 0)
+            if (ChainManager.Instance != null && spawnPoints.Length > 0)
             {
+                if (IsAllNodesConnected())
+                {
+                    Debug.Log("All nodes connected! Stopping dinosaur spawns.");
+                    yield break;
+                }
                 SpawnDinosaur();
             }
         }
     }
+private bool IsAllNodesConnected()
+    {
+        if (ChainManager.Instance == null) return false;
+        foreach (Node node in ChainManager.Instance.activeNodeChain)
+        {
+            if (node != null && node.stateMachine.CurrentState != node.connectedState)
+            {
+                return false;
+            }
+        }
 
+        return true;
+    }
     private void SpawnDinosaur()
     {
-        
-        Transform randomRouter = allRouters[Random.Range(0, allRouters.Count)];
+
+        List<Node> availableNodes = new List<Node>();
+    foreach (Node node in ChainManager.Instance.activeNodeChain)
+    {
+        if (node != null && 
+            node.stateMachine.CurrentState == node.connectedState && !node.isUnderAttack) 
+        {
+            availableNodes.Add(node);
+        }
+    }
+    if (availableNodes.Count > 0)
+    {
+        Node selectedNode = availableNodes[Random.Range(0, availableNodes.Count)];
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
 
-        
         GameObject dinoObj = ObjectPool.Instance.GetFromPool(randomSpawnPoint.position, Quaternion.identity);
 
         Dinosaur dino = dinoObj.GetComponent<Dinosaur>();
         if (dino != null)
         {
-            dino.Initialize(randomRouter);
+            dino.Initialize(selectedNode);
         }
+    }
     }
 }

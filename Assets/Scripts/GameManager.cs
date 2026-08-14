@@ -14,10 +14,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float levelTimer = 60f;
     [SerializeField] private float invincibilityDuration = 1f;
 
-
     public bool isGameActive = false;
     public bool isPaused=false;
     private bool isInvincible = false;
+
+     [Header("Audio Settings")]
+     [SerializeField] private AudioSource audioSource;
+     [SerializeField] private AudioClip gameOverSound;
+
 
 
     public static event Action<int> OnLivesChanged;
@@ -35,6 +39,9 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        if(audioSource == null )
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -100,7 +107,9 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        if (!isGameActive) return;
         isGameActive = false;
+        PlaySound(gameOverSound);
         OnGameOver?.Invoke();
     }
 
@@ -118,5 +127,11 @@ public class GameManager : MonoBehaviour
         OnPauseStateChanged?.Invoke(isPaused);
     }
 
-
+    private void PlaySound(AudioClip clip)
+    {
+        if(audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
+        }
+    }
 }

@@ -6,7 +6,8 @@ public class Node : MonoBehaviour
     [Header("Node Properties")]
     public string nodeID; 
     public bool isTargeted { get; set; } 
-
+    [Header("Dinosaur Tracking")]
+     public bool isUnderAttack { get; set; } = false;
     [Header("Components")]
     public SpriteRenderer spriteRenderer;
 
@@ -63,9 +64,21 @@ public class Node : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && isTargeted)
+        if (other.CompareTag("Player"))
         {
-            ActivateNode();
+            if (isTargeted)
+            {
+                ActivateNode();
+            }
+            else if (stateMachine.CurrentState == inactiveState)
+            {
+                ChainManager chainMgr = FindFirstObjectByType<ChainManager>();
+                if (chainMgr != null)
+                {
+                    chainMgr.OnWrongNodeHit();
+                }
+            }
         }
+       
     }
 }

@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System;
 public class PlayerDashNewInput : MonoBehaviour
 {
+    public static event Action OnPlayerDashed;
+
     private Animator anim;
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -10,6 +13,10 @@ public class PlayerDashNewInput : MonoBehaviour
     [Header("Dash Settings")]
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashCooldown = 0f;
+
+    [Header("Audio Settings")] 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip dashSound;
 
     private bool canDash = true;
     private bool isDashing;
@@ -24,6 +31,11 @@ public class PlayerDashNewInput : MonoBehaviour
         // Cache initial gravity scale setting
         originalGravity = rb.gravityScale;
         anim = GetComponent<Animator>();
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
     
     
@@ -36,6 +48,9 @@ public class PlayerDashNewInput : MonoBehaviour
             {
                 StopCoroutine(dashCoroutine);
             }
+
+            PlayDashSound();
+
             // Store coroutine reference to manage execution
          dashCoroutine =   StartCoroutine(DashToExactMousePointer());
         }
@@ -44,6 +59,8 @@ public class PlayerDashNewInput : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+
+        OnPlayerDashed?.Invoke();
 
         if (anim != null) anim.SetBool("isDashing", true);
 
@@ -103,7 +120,13 @@ public class PlayerDashNewInput : MonoBehaviour
 
     }
 
-        
+        private void PlayDashSound()
+    {
+        if (audioSource != null && dashSound != null)
+        {
+            audioSource.PlayOneShot(dashSound);
+        }
+    }
       
        
         // yield return new WaitForSeconds(dashCooldown);

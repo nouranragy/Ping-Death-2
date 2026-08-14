@@ -1070,7 +1070,7 @@ MonoBehaviour:
   dashSpeed: 200
   dashCooldown: 1
   audioSource: {fileID: 1184419348}
-  dashSound: {fileID: 0}
+  dashSound: {fileID: 8300000, guid: 705597d63e1b93b4aa9ee208a7ba2218, type: 3}
 --- !u!50 &1184419346
 Rigidbody2D:
   serializedVersion: 5
@@ -1464,7 +1464,7 @@ MonoBehaviour:
   - {fileID: 0}
   unvisitedNodes: []
   audioSource: {fileID: 1705846980}
-  connectSound: {fileID: 0}
+  connectSound: {fileID: 8300000, guid: 83b3c4669a62f6c41a651d5d55a51f23, type: 3}
   chainBreakSound: {fileID: 0}
   chainCompleteSound: {fileID: 0}
 --- !u!4 &1705846979

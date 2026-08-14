@@ -2,16 +2,26 @@ using UnityEngine;
 
 public class MovingBug : Bug
 {
+    private Animator anim;
     [Header("Movement Settings")]
     [SerializeField] private Transform[] waypoints; 
     [SerializeField] private float moveSpeed = 3f;   
 
     private int currentWaypointIndex = 0;
 
+    void Start()  //Animator
+    {
+        
+        anim = GetComponent<Animator>(); 
+        if (anim != null) anim.SetBool("isMoving", true);
+       
+    }
+    
     private void FixedUpdate()
     {
-        if (!GameManager.Instance.isGameActive) { return; }
-        MoveBetweenPoints();
+        if (GameManager.Instance != null && !GameManager.Instance.isGameActive) { return; } // سوري يا ملك جيميناي اللي قالي اغيرها
+        //if (!GameManager.Instance.isGameActive) { return; }
+        //MoveBetweenPoints();
     }
 
     private void MoveBetweenPoints()

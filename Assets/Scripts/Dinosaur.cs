@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Dinosaur : MonoBehaviour
 {
+    private Animator anim;//anim
     [Header ("Movement Settings")]
      [SerializeField] private float speed = 3f;
      [SerializeField] private float scareDistance = 2.5f; 
@@ -18,6 +19,8 @@ public class Dinosaur : MonoBehaviour
       private bool isFleeing = false;
     private void Start()
     {
+        anim = GetComponent<Animator>();//anim
+        
         GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
@@ -33,6 +36,10 @@ public class Dinosaur : MonoBehaviour
         isTimerRunning = false;
         isFleeing = false;
         currentTimer = timeToSaveRouter;
+
+        //anim
+        if (anim != null) anim.SetBool("isAttacking", false);
+        if (anim != null) anim.SetBool("isFleeing", false);
     }
     
 
@@ -84,6 +91,10 @@ public class Dinosaur : MonoBehaviour
         isTimerRunning = false;
         isAttacking = false;
         isFleeing = true;
+
+        //anim
+        if (anim != null) anim.SetBool("isAttacking", false);
+        if (anim != null) anim.SetBool("isFleeing", true);
     }
 
     private void FleeFromPlayer()
@@ -106,6 +117,8 @@ public class Dinosaur : MonoBehaviour
 
     private IEnumerator StartAttackCountdown()
     {
+        if (anim != null) anim.SetBool("isAttacking", true);//anim
+
       while (currentTimer > 0)
         {
         

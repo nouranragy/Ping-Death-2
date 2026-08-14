@@ -1,8 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System;
 public class PlayerDashNewInput : MonoBehaviour
 {
+    public static event Action OnPlayerDashed;
+
     private Animator anim;
     private Rigidbody2D rb;
     private Camera mainCam;
@@ -56,6 +59,8 @@ public class PlayerDashNewInput : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+
+        OnPlayerDashed?.Invoke();
 
         if (anim != null) anim.SetBool("isDashing", true);
 

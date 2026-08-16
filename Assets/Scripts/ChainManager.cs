@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class ChainManager : MonoBehaviour
 {
-    public static ChainManager Instance { get; private set; }
+   public static ChainManager Instance;
+
    [Header("Chain Settings")]
    public float timeWindow = 5.0f;
    private float currentTimer;
@@ -15,12 +17,14 @@ public class ChainManager : MonoBehaviour
    private Node currentTargetNode;
 
    [Header("Audio Settings")]
-    [SerializeField] private AudioSource audioSource;
+    
     [SerializeField] private AudioClip connectSound; 
     [SerializeField] private AudioClip chainBreakSound;
-    [SerializeField] private AudioClip chainCompleteSound;
+    //[SerializeField] private AudioClip chainCompleteSound;
 
-   private void Awake()
+    public static event Action<int, int> OnChainUpdated; 
+
+    private void Awake()
     {
 
         if (Instance != null && Instance != this)
@@ -29,8 +33,6 @@ public class ChainManager : MonoBehaviour
             return;
         }
         Instance = this;
-    if (audioSource == null)
-            audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -57,7 +59,8 @@ public class ChainManager : MonoBehaviour
             if (currentTimer <= 0)
             {
                 Debug.Log("Time Out! Chain Broken!");
-                PlaySound(chainBreakSound);
+                
+                AudioManager.Instance.PlaySFX(chainBreakSound);
                 ResetChain();
             }
         }
@@ -65,9 +68,14 @@ public class ChainManager : MonoBehaviour
 
     private void SetNextRandomTargetNode()
     {
-        if(unvisitedNodes.Count > 0)
+        int totalNodes = activeNodeChain.Count;
+        int connectedNodes = totalNodes - unvisitedNodes.Count ;
+
+        OnChainUpdated?.Invoke(connectedNodes, totalNodes);
+
+        if (unvisitedNodes.Count > 0)
         {
-            int randomIndex = Random.Range(0, unvisitedNodes.Count);
+            int randomIndex = UnityEngine.Random.Range(0, unvisitedNodes.Count);
             currentTargetNode = unvisitedNodes[randomIndex];
             unvisitedNodes.RemoveAt(randomIndex);
             currentTargetNode.SetState(currentTargetNode.targetedState);
@@ -77,7 +85,8 @@ public class ChainManager : MonoBehaviour
         {
             //Added the debug statement in the LevelWin method
             Debug.Log("Chain Completed Successfully!");
-            PlaySound(chainCompleteSound);
+      
+            //AudioManager.Instance.PlaySFX(chainCompleteSound);
             GameManager.Instance.LevelWin();
             isTimeRunning = false;
         }
@@ -88,34 +97,38 @@ public class ChainManager : MonoBehaviour
         if(node == currentTargetNode)
         {
             Debug.Log($"Node {node.nodeID} Connected!");
-            PlaySound(connectSound);
+          
             currentTimer = timeWindow;
             isTimeRunning = true;
             SetNextRandomTargetNode();
+            if (AudioManager.Instance != null && connectSound != null)
+            {
+                AudioManager.Instance.PlaySFX(connectSound);
+            }
         }
     }
 
     public void OnWrongNodeHit()
     {
         Debug.Log("Wrong Node Hit! Chain Broken!");
-        PlaySound(chainBreakSound);
+        AudioManager.Instance.PlaySFX(chainBreakSound); ;
         ResetChain();
     }
 
     public void DisconnectSingleNode(Node nodeToDisconnect)
-{
-    if (nodeToDisconnect == null) return;
+    {
+        if (nodeToDisconnect == null) return;
 
-    Debug.Log($"Dinosaur disconnected Node: {nodeToDisconnect.nodeID}");
+        Debug.Log($"Dinosaur disconnected Node: {nodeToDisconnect.nodeID}");
 
-    PlaySound(chainBreakSound);
-    nodeToDisconnect.SetState(nodeToDisconnect.inactiveState);
+        AudioManager.Instance.PlaySFX(chainBreakSound);
+        nodeToDisconnect.SetState(nodeToDisconnect.inactiveState);
 
    
-    if (!unvisitedNodes.Contains(nodeToDisconnect))
-    {
-        unvisitedNodes.Add(nodeToDisconnect);
-    }
+        if (!unvisitedNodes.Contains(nodeToDisconnect))
+        {
+            unvisitedNodes.Add(nodeToDisconnect);
+        }
 }
     public void ResetChain()
     {
@@ -128,12 +141,8 @@ public class ChainManager : MonoBehaviour
 
         unvisitedNodes = new List<Node>(activeNodeChain);
         SetNextRandomTargetNode();
+
+        OnChainUpdated?.Invoke(0, activeNodeChain.Count);
     }
-    private void PlaySound(AudioClip clip)
-    {
-        if (audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-    }
+   
 }

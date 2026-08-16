@@ -354,7 +354,7 @@ MonoBehaviour:
   isGameActive: 0
   isPaused: 0
   audioSource: {fileID: 371164911}
-  gameOverSound: {fileID: 0}
+  gameOverSound: {fileID: 8300000, guid: 588042e067bd04a4fa40dbdfe539e8ce, type: 3}
 --- !u!4 &371164910
 Transform:
   m_ObjectHideFlags: 0

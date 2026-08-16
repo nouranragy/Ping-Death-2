@@ -4,19 +4,24 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    
-    public TextMeshProUGUI livesText;
-    public TextMeshProUGUI timerText;
+
+    //public TextMeshProUGUI livesText;
     // public TextMeshProUGUI gameOverText;
+    [SerializeField] private GameObject[] heartImages;
+    [SerializeField] private TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI chainCounterText;
+
 
 
     //public Button pauseButton;
     //public Button restartButton;
-    public Button nextLevelButton;
+    [SerializeField] private Button nextLevelButton;
 
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject WinPanel;
+
+
 
 
     private void OnEnable()
@@ -26,6 +31,7 @@ public class UIManager : MonoBehaviour
         GameManager.OnPauseStateChanged += ShowPausePanel;
         GameManager.OnGameOver += ShowGameOverPanel;
         GameManager.OnGameWin += ShowWinPanel;
+        ChainManager.OnChainUpdated += UpdateChainUI;
     }
 
     private void OnDisable()
@@ -35,17 +41,38 @@ public class UIManager : MonoBehaviour
         GameManager.OnPauseStateChanged -= ShowPausePanel;
         GameManager.OnGameOver -= ShowGameOverPanel;
         GameManager.OnGameWin -= ShowWinPanel;
+        ChainManager.OnChainUpdated -= UpdateChainUI;
     }
 
     private void UpdateLivesUI(int newLives)
     {
-        livesText.text = "Lives: " + newLives;
+        //livesText.text = "Lives: " + newLives;
+        for (int i = 0; i < heartImages.Length; i++)
+        {
+            if (i < newLives)
+            {
+                heartImages[i].SetActive(true);
+            }
+            else
+            {
+                heartImages[i].SetActive(false);
+            }
+        }
     }
 
     private void UpdateTimerUI(float newTime)
     {
-        timerText.text = "Time: " + Mathf.Ceil(newTime).ToString();
+        timerText.text = Mathf.Ceil(newTime).ToString();
     }
+
+    private void UpdateChainUI(int connected, int total)
+    {
+        if (chainCounterText != null)
+        {
+            chainCounterText.text = "CHAIN "+connected;
+        }
+    }
+
 
     private void ShowPausePanel(bool isPaused)
     { 
@@ -63,10 +90,14 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 0f;
 
         WinPanel.SetActive(true);
+        ShowNextLevelButton();
+    }
+
+    private void ShowNextLevelButton()
+    {
         int nextSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex + 1;
         bool hasNextLevel = nextSceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
         nextLevelButton.gameObject.SetActive(hasNextLevel);
-
     }
 
     public void OnNextLevelButtonClicked()
@@ -93,6 +124,9 @@ public class UIManager : MonoBehaviour
             GameManager.Instance.TogglePause();
     }
 
+
+
+    
 
 
 }

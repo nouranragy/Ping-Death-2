@@ -14,8 +14,6 @@ public class PlayerDashNewInput : MonoBehaviour
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashCooldown = 0f;
 
-    [Header("Audio Settings")] 
-    [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip dashSound;
 
     private bool canDash = true;
@@ -32,10 +30,6 @@ public class PlayerDashNewInput : MonoBehaviour
         originalGravity = rb.gravityScale;
         anim = GetComponent<Animator>();
 
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
     }
     
     
@@ -49,7 +43,7 @@ public class PlayerDashNewInput : MonoBehaviour
                 StopCoroutine(dashCoroutine);
             }
 
-            PlayDashSound();
+            AudioManager.Instance.PlaySFX(dashSound);
 
             // Store coroutine reference to manage execution
          dashCoroutine =   StartCoroutine(DashToExactMousePointer());
@@ -119,17 +113,6 @@ public class PlayerDashNewInput : MonoBehaviour
          canDash = true;
 
     }
-
-        private void PlayDashSound()
-    {
-        if (audioSource != null && dashSound != null)
-        {
-            audioSource.PlayOneShot(dashSound);
-        }
-    }
-      
-       
-        // yield return new WaitForSeconds(dashCooldown);
         
     }
 

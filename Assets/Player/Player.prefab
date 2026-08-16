@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1573982971372985108}
   - component: {fileID: 7103022937368024877}
   - component: {fileID: 1422421075997765977}
+  - component: {fileID: 2955026401942931150}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -78,8 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashNewInput
   dashSpeed: 100
   dashCooldown: 0
-  audioSource: {fileID: 0}
-  dashSound: {fileID: 0}
+  dashSound: {fileID: 8300000, guid: 194f734ad78a39a4891aad8f11082520, type: 3}
 --- !u!114 &9068429998516304846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1155776459
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1229525431899254980, guid: 06cb5ce4658dbcc4ebfd4ea83731e5d0, type: 3}
@@ -238,3 +238,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.17, y: 0.28}
   m_EdgeRadius: 0
+--- !u!114 &2955026401942931150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591948495453371393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a23ce751f653048a70ce7fc79e775f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisuals
+  invincibilityDuration: 1
+  hitSound: {fileID: 8300000, guid: 7dd74d5c483daab4aa1795a087de35ec, type: 3}

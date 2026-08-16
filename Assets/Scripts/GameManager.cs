@@ -12,15 +12,13 @@ public class GameManager : MonoBehaviour
     private int currentLives;
     [SerializeField] public int maxLives = 3;
     [SerializeField] public float levelTimer = 60f;
-    [SerializeField] private float invincibilityDuration = 1f;
+    
 
-    [SerializeField] public bool isGameActive = false;
-    [SerializeField] public bool isPaused=false;
-    private bool isInvincible = false;
+     public bool isGameActive = false;
+     public bool isPaused=false;
+    
 
-     [Header("Audio Settings")]
-     [SerializeField] private AudioSource audioSource;
-     [SerializeField] private AudioClip gameOverSound;
+   
 
 
 
@@ -38,16 +36,12 @@ public class GameManager : MonoBehaviour
             return;
         }
         Instance = this;
-       
-        if(audioSource == null )
-        audioSource = GetComponent<AudioSource>();
     }
 
     
     private void Start()
     {
         StartGame();
-
     }
 
     private void Update()
@@ -74,7 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
-        if (isInvincible) return;
+        
 
         currentLives--;
         OnLivesChanged?.Invoke(currentLives);
@@ -83,33 +77,25 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
-        else
-        {
-            StartCoroutine(InvincibilityRoutine());
-        }
+        
     }
 
     public void LevelWin()
     {
         Debug.Log("Level Completed! All Random Nodes Connected!");
+
+        int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
+        PlayerPrefs.SetInt("UnlockedLevel",currentSceneIndex );
+        
         isGameActive = false;
         OnGameWin?.Invoke();
-    }
 
-    private IEnumerator InvincibilityRoutine()
-    {
-        isInvincible = true;
-
-        yield return new WaitForSeconds(invincibilityDuration);
-
-        isInvincible = false;
     }
 
     private void GameOver()
     {
         if (!isGameActive) return;
         isGameActive = false;
-        PlaySound(gameOverSound);
         OnGameOver?.Invoke();
     }
     
@@ -121,11 +107,4 @@ public class GameManager : MonoBehaviour
         OnPauseStateChanged?.Invoke(isPaused);
     }
 
-    private void PlaySound(AudioClip clip)
-    {
-        if(audioSource != null && clip != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
-    }
 }

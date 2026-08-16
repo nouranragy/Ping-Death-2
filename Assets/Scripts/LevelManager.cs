@@ -20,26 +20,25 @@ public class LevelManager : MonoBehaviour
     
     public void RestartCurrentLevel()
     {
-        Time.timeScale = 1f; 
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        Time.timeScale = 1f;
+
+        if (!GameManager.Instance.isGameActive)
+        {
+            SceneManager.LoadScene(1);
+        }
+        else
+        {
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
+        }
     }
 
     
     public void LoadNextLevel()
     {
-        Time.timeScale = 1f;
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        LoadLevel(nextSceneIndex);
 
-        
-        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
-        {
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-        else
-        {
-            LoadMainMenu(); 
-        }
     }
 
     public void LoadMainMenu()
@@ -48,5 +47,9 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    
+    public void LoadLevel(int levelIndex)
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(levelIndex);
+    }
 }

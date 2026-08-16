@@ -13,7 +13,7 @@ public class PlayerDashNewInput : MonoBehaviour
     [Header("Dash Settings")]
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashCooldown = 0f;
-    [SerializeField] private float masDashDuration = 0.2f;
+    [SerializeField] private float maxDashDuration = 0.2f;
 
     [SerializeField] private AudioClip dashSound;
 
@@ -58,7 +58,7 @@ public class PlayerDashNewInput : MonoBehaviour
 
         OnPlayerDashed?.Invoke();
 
-        if (anim != null) anim.SetBool("isDashing", true);
+        if (anim != null & GameManager.Instance.isGameActive)    anim.SetBool("isDashing", true);
 
           rb.linearVelocity = Vector2.zero;
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
@@ -67,7 +67,7 @@ public class PlayerDashNewInput : MonoBehaviour
         
         Vector2 dashDirection = (targetPosition - (Vector2)transform.position).normalized;
 
-        if (anim != null)
+        if (anim != null & GameManager.Instance.isGameActive)
         {
             anim.SetFloat("DashX", dashDirection.x);
             anim.SetFloat("DashY", dashDirection.y);
@@ -76,11 +76,14 @@ public class PlayerDashNewInput : MonoBehaviour
 
         //float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+        float elapsedTime = 0f;
 
-        while (Vector2.Distance(rb.position, targetPosition) > 0.05f)
+        while (Vector2.Distance(rb.position, targetPosition) > 0.1f && elapsedTime < maxDashDuration)
         {
             Vector2 newPosition = Vector2.MoveTowards(rb.position, targetPosition, dashSpeed * Time.deltaTime);
             rb.MovePosition(newPosition);
+
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
 
@@ -115,7 +118,25 @@ public class PlayerDashNewInput : MonoBehaviour
          canDash = true;
 
     }
-        
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (isDashing)
+        {
+            if (dashCoroutine != null)
+            {
+                StopCoroutine(dashCoroutine);
+            }
+            StopDashPhysics();
+            StartCoroutine(ResetDashCooldown());
+        }
     }
+    private IEnumerator ResetDashCooldown()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
+    
+
+}
 
 

@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 5190648238899901990}
   - component: {fileID: 923021027330591079}
   - component: {fileID: 7592777388785237573}
-  - component: {fileID: 8666781354058724199}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -55,16 +54,16 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: d75e5dc14b3be4b4e878c103b0990c53, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &6390279879290414084
 MonoBehaviour:
@@ -80,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDashNewInput
   dashSpeed: 100
   dashCooldown: 0
+  maxDashDuration: 0.2
   dashSound: {fileID: 8300000, guid: 194f734ad78a39a4891aad8f11082520, type: 3}
 --- !u!114 &7077477300621287418
 MonoBehaviour:
@@ -180,7 +180,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1155776459
   m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1229525431899254980, guid: 06cb5ce4658dbcc4ebfd4ea83731e5d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -240,20 +240,6 @@ BoxCollider2D:
   m_Size: {x: 0.17, y: 0.28}
   m_EdgeRadius: 0
 --- !u!114 &7592777388785237573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5449045843841218053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13a23ce751f653048a70ce7fc79e775f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisuals
-  invincibilityDuration: 1
-  hitSound: {fileID: 8300000, guid: 7dd74d5c483daab4aa1795a087de35ec, type: 3}
---- !u!114 &8666781354058724199
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

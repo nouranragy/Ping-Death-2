@@ -94,7 +94,7 @@ public class Dinosaur : MonoBehaviour
 
         //anim
         if (anim != null) anim.SetBool("isAttacking", false);
-        if (anim != null) anim.SetBool("isFleeing", true);
+        //if (anim != null) anim.SetBool("isFleeing", true);
     }
 
     private void FleeFromPlayer()

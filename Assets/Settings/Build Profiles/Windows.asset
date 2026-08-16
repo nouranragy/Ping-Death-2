@@ -23,17 +23,14 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/Malak Scenes/MainMenu.unity
+    m_path: Assets/Scenes/FinalLevels/MainMenu.unity
     m_guid: 01cba48bf75651441827abdfd5f70ec8
   - m_enabled: 1
-    m_path: Assets/Scenes/Malak Scenes/Level_1.unity
+    m_path: Assets/Scenes/FinalLevels/Level_1.unity
     m_guid: 4cef79fb20c6ce0418ea8c6a86ce296f
   - m_enabled: 1
-    m_path: Assets/Scenes/Malak Scenes/Level_2.unity
+    m_path: Assets/Scenes/FinalLevels/Level_2.unity
     m_guid: 65a1032466d137a4e9fbdc37c4bc17e6
-  - m_enabled: 1
-    m_path: Assets/Scenes/Malak Scenes/Level_3.unity
-    m_guid: 7ac8935619636e743852f350266bd58f
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:

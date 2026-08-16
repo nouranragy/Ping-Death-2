@@ -100,7 +100,6 @@ public class ChainManager : MonoBehaviour
     {
         if(node == currentTargetNode)
         {
-            Debug.Log($"Node {node.nodeID} Connected!");
           
             currentTimer = timeWindow;
             isTimeRunning = true;

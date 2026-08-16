@@ -7,18 +7,20 @@ public class MovingRouter : MonoBehaviour
     [SerializeField] private float speed = 2f;
 
     private Vector3 startPos;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         startPos = transform.position;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        if (!GameManager.Instance.isGameActive) { return; }
         // Smooth linear back-and-forth movement using Mathf.PingPong
         float factor = Mathf.PingPong(Time.time * speed, 1f);
         transform.position = Vector3.Lerp(startPos, startPos + (Vector3)moveOffset, factor);
+
     }
     // Visualization in Editor to see movement path
     private void OnDrawGizmosSelected()

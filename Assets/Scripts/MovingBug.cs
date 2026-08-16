@@ -12,7 +12,7 @@ public class MovingBug : Bug
     void Start()  //Animator
     {
         anim = GetComponent<Animator>(); 
-        if (anim != null) anim.SetBool("isMoving", true);
+        if (anim != null & GameManager.Instance.isGameActive) anim.SetBool("isMoving", true);
        
     }
     

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dinosaur
       objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: e10a378b226cb5c4c971c749fde3bf9c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: e10a378b226cb5c4c971c749fde3bf9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.6977725
@@ -81,6 +85,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dinosaur
   speed: 3
+  scareDistance: 2.5
+  fleeSpeed: 5
   timeToSaveRouter: 5
 --- !u!61 &2181450530315911895
 BoxCollider2D:

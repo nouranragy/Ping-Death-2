@@ -11,10 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private TextMeshProUGUI chainCounterText;
 
+    [SerializeField] private TextMeshProUGUI gameOverReasonText; 
 
-
-    //public Button pauseButton;
-    //public Button restartButton;
     [SerializeField] private Button nextLevelButton;
 
     [SerializeField] private GameObject gameOverPanel;
@@ -79,8 +77,13 @@ public class UIManager : MonoBehaviour
         pausePanel.SetActive(isPaused);
     }
 
-    private void ShowGameOverPanel()
+    private void ShowGameOverPanel(string gameOverReason)
     {
+        if (gameOverReasonText != null)
+        {
+            gameOverReasonText.text = gameOverReason;
+        }
+
         gameOverPanel.SetActive(true);
 
     }
@@ -123,10 +126,5 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null)
             GameManager.Instance.TogglePause();
     }
-
-
-
-    
-
 
 }

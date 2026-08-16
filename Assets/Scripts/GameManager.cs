@@ -17,14 +17,9 @@ public class GameManager : MonoBehaviour
      public bool isGameActive = false;
      public bool isPaused=false;
     
-
-   
-
-
-
     public static event Action<int> OnLivesChanged;
     public static event Action<float> OnTimerUpdated;
-    public static event Action  OnGameOver;
+    public static event Action<string> OnGameOver;
     public static event Action OnGameWin;
     public static event Action<bool> OnPauseStateChanged;
 
@@ -53,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (levelTimer <= 0)
         {
-            GameOver();
+            GameOver("Out Of Time!");
         }
     }
 
@@ -75,7 +70,7 @@ public class GameManager : MonoBehaviour
 
         if (currentLives <= 0)
         {
-            GameOver();
+            GameOver("Out Of Lives!");
         }
         
     }
@@ -92,11 +87,11 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void GameOver()
+    private void GameOver(string gameOverReason )
     {
         if (!isGameActive) return;
         isGameActive = false;
-        OnGameOver?.Invoke();
+        OnGameOver?.Invoke(gameOverReason);
     }
     
     

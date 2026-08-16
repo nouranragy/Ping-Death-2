@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(winSound);
     }
 
-    private void PlayGameOverSound()
+    private void PlayGameOverSound(string gameOverReason)
     {
         musicSource.Stop();
         sfxSource.PlayOneShot(gameOverSound);

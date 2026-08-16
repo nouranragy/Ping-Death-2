@@ -13,6 +13,7 @@ public class PlayerDashNewInput : MonoBehaviour
     [Header("Dash Settings")]
     [SerializeField] private float dashSpeed = 20f;
     [SerializeField] private float dashCooldown = 0f;
+    [SerializeField] private float masDashDuration = 0.2f;
 
     [SerializeField] private AudioClip dashSound;
 
@@ -37,6 +38,7 @@ public class PlayerDashNewInput : MonoBehaviour
     {
         if (value.isPressed && canDash && !isDashing)
         {
+            if (!GameManager.Instance.isGameActive) { return; }
             // Stop any leftover coroutine before starting a new one
             if (dashCoroutine != null)
             {

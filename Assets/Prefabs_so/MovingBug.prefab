@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.68, y: -1.74, z: 0}
-  m_LocalScale: {x: 5.4653206, y: 5.4653206, z: 5.4653206}
+  m_LocalScale: {x: 6.137528, y: 6.137528, z: 6.137528}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -157,6 +157,7 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   moveSpeed: 3
 --- !u!95 &1632679300471003323
 Animator:
@@ -210,7 +211,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

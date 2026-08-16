@@ -39,10 +39,14 @@ public class ChainManager : MonoBehaviour
    private void OnEnable()
     {
         Node.OnNodeConnected += ValidateConnection;
+        GameManager.OnGameOver += HandleGameOver;
+
     }
     private void OnDisable()
     {
         Node.OnNodeConnected -= ValidateConnection;
+        GameManager.OnGameOver -= HandleGameOver;
+
     }
     private void Start()
     {
@@ -144,5 +148,16 @@ public class ChainManager : MonoBehaviour
 
         OnChainUpdated?.Invoke(0, activeNodeChain.Count);
     }
-   
+
+    private void HandleGameOver(string gameOverReason)
+    {
+        isTimeRunning = false;
+
+        foreach (Node node in activeNodeChain)
+        {
+            node.SetState(node.inactiveState);
+
+        }
+    }
+
 }

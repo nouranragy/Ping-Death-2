@@ -35,6 +35,7 @@ public class PlayerDashNewInput : MonoBehaviour
     
     public void OnDash(InputValue value)
     {
+        if (GameManager.Instance != null && !GameManager.Instance.isGameActive) return;
         if (value.isPressed && canDash && !isDashing)
         {
             // Stop any leftover coroutine before starting a new one

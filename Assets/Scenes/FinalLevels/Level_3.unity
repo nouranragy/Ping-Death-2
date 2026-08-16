@@ -6075,7 +6075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b225660e2719143b93ab2e1cf77c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainManager
-  timeWindow: 2.5
+  timeWindow: 2
   activeNodeChain:
   - {fileID: 0}
   - {fileID: 0}

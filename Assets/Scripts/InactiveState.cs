@@ -1,4 +1,3 @@
-using Unity.GraphToolkit.Editor;
 using UnityEngine;
 
 public class InactiveState : IState

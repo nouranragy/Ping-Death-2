@@ -167,5 +167,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627f038fedcfe5f438da1e6478bb5723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircularMovement
-  radius: 2
-  speed: 2
+  radius: 1
+  speed: 2.3

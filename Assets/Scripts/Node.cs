@@ -72,7 +72,7 @@ public class Node : MonoBehaviour
             }
             else if (stateMachine.CurrentState == inactiveState)
             {
-                ChainManager chainMgr = FindFirstObjectByType<ChainManager>();
+                ChainManager chainMgr = FindAnyObjectByType<ChainManager>();
                 if (chainMgr != null)
                 {
                     chainMgr.OnWrongNodeHit();

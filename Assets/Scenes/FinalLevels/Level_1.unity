@@ -4406,7 +4406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   maxLives: 3
-  levelTimer: 30
+  levelTimer: 10
   isGameActive: 0
   isPaused: 0
 --- !u!4 &802584488
@@ -6370,10 +6370,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4518296715343945063, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6226635222190996351, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6452,10 +6448,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6226635222190996351, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8285803972482022227, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8851463715484300361, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}

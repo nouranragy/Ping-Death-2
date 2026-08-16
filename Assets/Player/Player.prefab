@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7103022937368024877}
   - component: {fileID: 1422421075997765977}
   - component: {fileID: 2955026401942931150}
+  - component: {fileID: 6197505472971268914}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -64,7 +65,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8292064041262027408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,6 +240,20 @@ BoxCollider2D:
   m_Size: {x: 0.17, y: 0.28}
   m_EdgeRadius: 0
 --- !u!114 &2955026401942931150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4591948495453371393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a23ce751f653048a70ce7fc79e775f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisuals
+  invincibilityDuration: 1
+  hitSound: {fileID: 8300000, guid: 7dd74d5c483daab4aa1795a087de35ec, type: 3}
+--- !u!114 &6197505472971268914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

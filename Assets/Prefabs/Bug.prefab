@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3387244528025832217}
   - component: {fileID: 8302443653291789853}
   - component: {fileID: 1351483247154178776}
-  - component: {fileID: 8168256367228510202}
   - component: {fileID: -8000454612757012285}
+  - component: {fileID: 4208417436198217707}
   m_Layer: 0
   m_Name: Bug
   m_TagString: Bug
@@ -80,9 +80,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: 1347979527
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4948191364208534778, guid: 8dcab3e573bbe6145ae0b9417b7343ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -141,20 +141,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.75, y: 0.8125}
   m_EdgeRadius: 0
---- !u!114 &8168256367228510202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3170138867538338499}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf15e2adacfc0814eb7a4da6a4beca1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bug
-  audioSource: {fileID: -8000454612757012285}
-  hitPlayerSound: {fileID: 0}
 --- !u!82 &-8000454612757012285
 AudioSource:
   m_ObjectHideFlags: 0
@@ -252,3 +238,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4208417436198217707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170138867538338499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7159bc0e2c81424e9eca75380175311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MovingBug
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  moveSpeed: 3

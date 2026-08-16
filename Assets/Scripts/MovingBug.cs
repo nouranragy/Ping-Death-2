@@ -17,12 +17,8 @@ public class MovingBug : Bug
     }
     
     private void FixedUpdate()
-<<<<<<< HEAD
-    {   
-=======
     {
         if (GameManager.Instance != null && !GameManager.Instance.isGameActive) { return; } // سوري يا ملك جيميناي اللي قالي اغيرها
->>>>>>> main
         if (!GameManager.Instance.isGameActive) { return; }
         MoveBetweenPoints();
     }

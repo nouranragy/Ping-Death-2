@@ -6160,6 +6160,8 @@ MonoBehaviour:
   buttonClickSound: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
   backgroundMusic: {fileID: 8300000, guid: eb8cd905be89af840a56a77c22b80918, type: 3}
   mainMixer: {fileID: 24100000, guid: 7126d5d462353d645908d2f46dc2c871, type: 2}
+  maxMusicVolume: 0.15
+  maxSFXVolume: 0.25
 --- !u!4 &1670189033
 Transform:
   m_ObjectHideFlags: 0
@@ -6592,6 +6594,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3083447093770767134, guid: 19ae02b34e9c5514ca6686b1ae3717f2, type: 3}
+      propertyPath: timeWindow
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7424679274108021355, guid: 19ae02b34e9c5514ca6686b1ae3717f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.30654

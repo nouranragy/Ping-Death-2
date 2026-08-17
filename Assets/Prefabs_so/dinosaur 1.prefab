@@ -20,6 +20,18 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b6b34b8bd0b3b6b4fa240fbd9673532b, type: 2}
+    - target: {fileID: 3626916397498700004, guid: e10a378b226cb5c4c971c749fde3bf9c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: e10a378b226cb5c4c971c749fde3bf9c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: e10a378b226cb5c4c971c749fde3bf9c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1347979527
+      objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: e10a378b226cb5c4c971c749fde3bf9c, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2758
@@ -100,9 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5b92104798bfa7429a218d169330f3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dinosaur
-  speed: 6
-  scareDistance: 1.7
-  fleeSpeed: 5
+  speed: 3
+  scareDistance: 3
+  fleeSpeed: 4
   timeToSaveRouter: 3
 --- !u!61 &2022153364987284142
 BoxCollider2D:

@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
     private void OnHit(GameObject player)
     {
         GameManager.Instance.LoseLife();
-        Debug.Log("Player took damage");
+      
     }
     private IEnumerator InvincibilityRoutine()
     {

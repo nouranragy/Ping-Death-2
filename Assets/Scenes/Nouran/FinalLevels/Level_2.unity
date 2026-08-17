@@ -4494,7 +4494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3b225660e2719143b93ab2e1cf77c32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChainManager
-  timeWindow: 2
+  timeWindow: 1.8
   activeNodeChain:
   - {fileID: 0}
   - {fileID: 0}
@@ -6446,6 +6446,8 @@ MonoBehaviour:
   buttonClickSound: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
   backgroundMusic: {fileID: 8300000, guid: eb8cd905be89af840a56a77c22b80918, type: 3}
   mainMixer: {fileID: 24100000, guid: 7126d5d462353d645908d2f46dc2c871, type: 2}
+  maxMusicVolume: 0.15
+  maxSFXVolume: 0.25
 --- !u!4 &2097153311
 Transform:
   m_ObjectHideFlags: 0
@@ -6748,6 +6750,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6226635222190996351, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6675678394609568718, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8285803972482022227, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8851463715484300361, guid: 8fa87f1a80c45a142b8715c5f0d9c770, type: 3}

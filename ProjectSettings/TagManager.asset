@@ -45,11 +45,11 @@ TagManager:
   - name: Node
     uniqueID: 736362533
     locked: 0
-  - name: Player
-    uniqueID: 1155776459
-    locked: 0
   - name: Bugs
     uniqueID: 1347979527
+    locked: 0
+  - name: Player
+    uniqueID: 1155776459
     locked: 0
   m_RenderingLayers:
   - Default

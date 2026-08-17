@@ -62,7 +62,7 @@ public class ChainManager : MonoBehaviour
 
             if (currentTimer <= 0)
             {
-                Debug.Log("Time Out! Chain Broken!");
+                
                 
                 AudioManager.Instance.PlaySFX(chainBreakSound);
                 ResetChain();
@@ -113,7 +113,6 @@ public class ChainManager : MonoBehaviour
 
     public void OnWrongNodeHit()
     {
-        Debug.Log("Wrong Node Hit! Chain Broken!");
         AudioManager.Instance.PlaySFX(chainBreakSound); ;
         ResetChain();
     }
@@ -122,7 +121,7 @@ public class ChainManager : MonoBehaviour
     {
         if (nodeToDisconnect == null) return;
 
-        Debug.Log($"Dinosaur disconnected Node: {nodeToDisconnect.nodeID}");
+        
 
         AudioManager.Instance.PlaySFX(chainBreakSound);
         nodeToDisconnect.SetState(nodeToDisconnect.inactiveState);

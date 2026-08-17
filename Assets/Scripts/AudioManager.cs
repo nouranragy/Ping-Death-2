@@ -21,6 +21,10 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Mixer")]
     [SerializeField] private AudioMixer mainMixer;
 
+    [SerializeField] private float maxMusicVolume = 0.15f; 
+    [SerializeField] private float maxSFXVolume = 0.25f;
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -36,6 +40,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        UpdateVolumeSettings();
         PlayMusic(backgroundMusic);
     }
 
@@ -95,10 +100,26 @@ public class AudioManager : MonoBehaviour
     }
     public void SetMusicVolume(float value)
     {
-        mainMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Max(0.0001f, value)) * 20);
+        float cappedValue = Mathf.Clamp01(value) * maxMusicVolume;
+        musicSource.volume = cappedValue;
+        
+        PlayerPrefs.SetFloat("MusicVolume", value);
     }
     public void SetSFXVolume(float value)
     {
-        mainMixer.SetFloat("SFXVolume", Mathf.Log10(Mathf.Max(0.0001f, value)) * 20);
+        float cappedValue = Mathf.Clamp01(value) * maxSFXVolume;
+        sfxSource.volume = cappedValue;
+        PlayerPrefs.SetFloat("SFXVolume", value);
+    }
+
+    private void UpdateVolumeSettings()
+    {
+        
+        float savedMusicVol = PlayerPrefs.GetFloat("MusicVolume",1f);
+        float savedSFXVol = PlayerPrefs.GetFloat("SFXVolume",1f);
+
+
+        SetMusicVolume(savedMusicVol);
+        SetSFXVolume(savedSFXVol);
     }
 }

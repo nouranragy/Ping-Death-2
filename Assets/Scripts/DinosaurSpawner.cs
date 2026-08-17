@@ -22,7 +22,7 @@ public class DinosaurSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(timeBetweenSpawns);
 
-            if (ChainManager.Instance != null && spawnPoints.Length > 0)
+            if (ChainManager.Instance != null && spawnPoints.Length > 0 )
             {
                 if (IsAllNodesConnected())
                 {

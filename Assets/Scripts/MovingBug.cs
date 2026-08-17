@@ -9,16 +9,17 @@ public class MovingBug : Bug
 
     private int currentWaypointIndex = 0;
 
-    void Start()  //Animator
+    void Start()  
     {
         anim = GetComponent<Animator>(); 
-        if (anim != null & GameManager.Instance.isGameActive) anim.SetBool("isMoving", true);
+        if  (GameManager.Instance.isGameActive) anim.SetBool("isMoving", true);
        
     }
     
     private void FixedUpdate()
     {
         if (!GameManager.Instance.isGameActive) { return; }
+
         MoveBetweenPoints();
     }
 

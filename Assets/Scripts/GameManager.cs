@@ -77,12 +77,12 @@ public class GameManager : MonoBehaviour
 
     public void LevelWin()
     {
-        Debug.Log("Level Completed! All Random Nodes Connected!");
 
         int currentSceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("UnlockedLevel",currentSceneIndex );
         
         isGameActive = false;
+        Time.timeScale = 0f;
         OnGameWin?.Invoke();
 
     }
@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         if (!isGameActive) return;
         isGameActive = false;
         OnGameOver?.Invoke(gameOverReason);
+        Time.timeScale = 0f;
     }
     
     

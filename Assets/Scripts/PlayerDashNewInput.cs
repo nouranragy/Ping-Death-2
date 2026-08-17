@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
 using System;
+using Unity.VisualScripting;
 public class PlayerDashNewInput : MonoBehaviour
 {
     public static event Action OnPlayerDashed;
@@ -19,10 +20,10 @@ public class PlayerDashNewInput : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    
+
     private Coroutine dashCoroutine; // track active dash coroutine to allow manual cancellation
     private float originalGravity; // Store default gravity scale to restore after dashing
-    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,8 +33,8 @@ public class PlayerDashNewInput : MonoBehaviour
         anim = GetComponent<Animator>();
 
     }
-    
-    
+
+
     public void OnDash(InputValue value)
     {
         if (value.isPressed && canDash && !isDashing)
@@ -48,7 +49,7 @@ public class PlayerDashNewInput : MonoBehaviour
             AudioManager.Instance.PlaySFX(dashSound);
 
             // Store coroutine reference to manage execution
-         dashCoroutine =   StartCoroutine(DashToExactMousePointer());
+            dashCoroutine = StartCoroutine(DashToExactMousePointer());
         }
     }
     private IEnumerator DashToExactMousePointer()
@@ -58,20 +59,20 @@ public class PlayerDashNewInput : MonoBehaviour
 
         OnPlayerDashed?.Invoke();
 
-        if (anim != null & GameManager.Instance.isGameActive)    anim.SetBool("isDashing", true);
+        if (anim != null & GameManager.Instance.isGameActive) anim.SetBool("isDashing", true);
 
-          rb.linearVelocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
         Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
         Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(mouseScreenPos);
         Vector2 targetPosition = new Vector2(mouseWorldPos.x, mouseWorldPos.y);
-        
+
         Vector2 dashDirection = (targetPosition - (Vector2)transform.position).normalized;
 
         if (anim != null & GameManager.Instance.isGameActive)
         {
             anim.SetFloat("DashX", dashDirection.x);
             anim.SetFloat("DashY", dashDirection.y);
-            anim.SetTrigger("Dash"); 
+            anim.SetTrigger("Dash");
         }
 
         //float originalGravity = rb.gravityScale;
@@ -114,8 +115,8 @@ public class PlayerDashNewInput : MonoBehaviour
             dashCoroutine = null;
         }
         rb.gravityScale = originalGravity;
-         isDashing = false;
-         canDash = true;
+        isDashing = false;
+        canDash = true;
 
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -135,8 +136,7 @@ public class PlayerDashNewInput : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
     }
-    
-
+   
 }
 
 

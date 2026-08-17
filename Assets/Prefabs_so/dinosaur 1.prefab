@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dinosaur
   speed: 3
-  scareDistance: 3
+  scareDistance: 3.5
   fleeSpeed: 4
-  timeToSaveRouter: 3
+  timeToSaveRouter: 0.5
 --- !u!61 &2022153364987284142
 BoxCollider2D:
   m_ObjectHideFlags: 0
